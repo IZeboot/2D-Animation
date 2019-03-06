@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FrogMovement : MonoBehaviour
 {
+    [SerializeField] Animator animator;
     [SerializeField] GameObject platform;
     [SerializeField] Transform currentPoint;
     [SerializeField] Transform[] points;
@@ -18,18 +19,20 @@ public class FrogMovement : MonoBehaviour
 
     private void Update()
     {
-        platform.transform.position = Vector3.MoveTowards(platform.transform.position, currentPoint.position, speed * Time.deltaTime);
-        //platform.transform.position = Vector3.MoveTowards(platform.transform.position, currentPoint.transform.position, Mathf.Abs(speed * Time.deltaTime));
-        if (platform.transform.position.x <= currentPoint.position.x)
+        if (animator.IsInTransition(0))
         {
-            currentSelect++;
-            platform.transform.Rotate((float)0.0, (float)0.0, (float)1.0);
-            if (currentSelect == points.Length)
+            platform.transform.position = Vector3.MoveTowards(platform.transform.position, currentPoint.position, speed * Time.deltaTime);
+            int positionX = Mathf.FloorToInt(platform.transform.position.x - currentPoint.position.x);
+            if (positionX == -1 || positionX == 1)
             {
-                currentSelect = 0;
+                platform.transform.Rotate((float)0.0, (float)180.0, (float)0.0);
+                currentSelect++;
+                if (currentSelect == points.Length)
+                {
+                    currentSelect = 0;
+                }
+                currentPoint = points[currentSelect];
             }
-            currentPoint = points[currentSelect];
-
         }
     }
 
