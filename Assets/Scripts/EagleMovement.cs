@@ -19,7 +19,6 @@ public class EagleMovement : MonoBehaviour
 
     private void Update()
     {
-        currentPoint.position = new Vector3(currentPoint.position.x, jump);
         platform.transform.position = Vector3.MoveTowards(platform.transform.position, currentPoint.position, speed * Time.deltaTime);
         int positionX = Mathf.FloorToInt(platform.transform.position.x - currentPoint.position.x);
         if (positionX == -1 || positionX == 1)

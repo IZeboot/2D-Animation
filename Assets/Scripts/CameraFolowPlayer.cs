@@ -35,5 +35,24 @@ public class CameraFolowPlayer : MonoBehaviour
                 cameraTransform.transform.position = new Vector3(positionX, cameraTransform.position.y, cameraTransform.position.z);
             }
         }
+        if (playerTransform.position.y > cameraTransform.position.y)
+        {
+            int distance = Mathf.FloorToInt(playerTransform.position.y - cameraTransform.position.y);
+
+            if (distance > distanceCurrent/2)
+            {
+                float positionY = playerTransform.position.y - distance;
+                cameraTransform.transform.position = new Vector3(cameraTransform.position.x, positionY, cameraTransform.position.z);
+            }
+        }
+        else
+        {
+            int distance = Mathf.FloorToInt(cameraTransform.position.y - playerTransform.position.y);
+            if (distance > distanceCurrent/2)
+            {
+                float positionY = playerTransform.position.y + distance;
+                cameraTransform.transform.position = new Vector3(cameraTransform.position.x, positionY, cameraTransform.position.z);
+            }
+        }
     }
 }

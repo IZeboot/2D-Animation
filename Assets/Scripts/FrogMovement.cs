@@ -21,6 +21,7 @@ public class FrogMovement : MonoBehaviour
     {
         if (animator.IsInTransition(0))
         {
+            platform.transform.position = new Vector3(platform.transform.position.x, (platform.transform.position.y + (float)jump));
             platform.transform.position = Vector3.MoveTowards(platform.transform.position, currentPoint.position, speed * Time.deltaTime);
             int positionX = Mathf.FloorToInt(platform.transform.position.x - currentPoint.position.x);
             if (positionX == -1 || positionX == 1)
