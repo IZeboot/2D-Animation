@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -143,4 +144,18 @@ public class CharacterController2D : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+    public IEnumerator Knockback(float knockDur, float knockPwr, Vector3 knockBackDir)
+    {
+        float timer = 0;
+
+        while (knockDur > timer)
+        {
+            timer += Time.deltaTime;
+            m_Rigidbody2D.AddForce(new Vector3(knockBackDir.x*-knockPwr, knockBackDir.y * knockPwr, transform.position.z));
+        }
+
+        yield return 0;
+    }
+
 }

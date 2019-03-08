@@ -35,6 +35,7 @@ public class FrogMovement : MonoBehaviour
                 currentPoint = points[currentSelect];
             }
         }
+
     }
 
 }
