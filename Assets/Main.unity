@@ -1189,8 +1189,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b5728267348455abc9d6a51ab1e0cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewAngle: 130
-  viewRadius: 10.24
+  viewAngle: 90
+  viewRadius: 11
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 256
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 512
+  visibleTargets: []
 --- !u!1 &981602203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,9 +2247,9 @@ GameObject:
   - component: {fileID: 1813485691}
   - component: {fileID: 1813485690}
   - component: {fileID: 1813485689}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Middle
-  m_TagString: Untagged
+  m_TagString: Middle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
