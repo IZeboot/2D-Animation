@@ -16,5 +16,11 @@ public class FieldOfViewEditor : Editor
         Vector3 viewAngleB = fow.DirFromAngle(fow.viewAngle / 2, false);
         Handles.DrawLine(fow.transform.position, fow.transform.position - viewAngleA * fow.viewRadius * Mathf.Cos(fow.transform.rotation.eulerAngles.y * Mathf.Deg2Rad));
         Handles.DrawLine(fow.transform.position, fow.transform.position - viewAngleB * fow.viewRadius * Mathf.Cos(fow.transform.rotation.eulerAngles.y * Mathf.Deg2Rad));
+
+        Handles.color = Color.red;
+        foreach(Transform visibleTarget in fow.visibleTargets)
+        {
+            Handles.DrawLine(fow.transform.position, visibleTarget.position);
+        }
     }
 }
